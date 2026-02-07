@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Oh Nooo 💔</title>
+
+  <style>
+    body {
+      margin: 0;
+      height: 100vh;
+      overflow: hidden;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-family: Arial, sans-serif;
+      color: white;
+      text-align: center;
+
+      /* Excited animated background */
+      background: linear-gradient(
+        -45deg,
+        #ff0057,
+        #ff7eb3,
+        #ff758c,
+        #ff0000
+      );
+      background-size: 400% 400%;
+      animation: bgMove 8s ease infinite;
+    }
+
+    @keyframes bgMove {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+
+    h1 {
+      font-size: 2.6rem;
+      animation: pulse 1.2s infinite, shake 0.4s infinite;
+      z-index: 10;
+    }
+
+    @keyframes pulse {
+      0% { transform: scale(1); }
+      50% { transform: scale(1.08); }
+      100% { transform: scale(1); }
+    }
+
+    @keyframes shake {
+      0% { transform: translateX(0); }
+      25% { transform: translateX(-4px); }
+      50% { transform: translateX(4px); }
+      75% { transform: translateX(-4px); }
+      100% { transform: translateX(0); }
+    }
+
+    /* Emoji animation */
+    .emoji {
+      position: absolute;
+      font-size: 28px;
+      animation: floatUp 5s linear forwards;
+      pointer-events: none;
+    }
+
+    @keyframes floatUp {
+      0% {
+        transform: translateY(0) scale(1);
+        opacity: 1;
+      }
+      100% {
+        transform: translateY(-120vh) scale(1.6);
+        opacity: 0;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <h1>Oh nooo 😭💔<br>You clicked NOOO!</h1>
+
+  <script>
+    const emojis = ["😭", "💔", "💖", "😵‍💫", "😱", "🥲"];
+
+    setInterval(() => {
+      const e = document.createElement("div");
+      e.className = "emoji";
+      e.innerText = emojis[Math.floor(Math.random() * emojis.length)];
+      e.style.left = Math.random() * 100 + "vw";
+      e.style.bottom = "-40px";
+      e.style.fontSize = Math.random() * 25 + 20 + "px";
+
+      document.body.appendChild(e);
+
+      setTimeout(() => {
+        e.remove();
+      }, 5000);
+    }, 180);
+  </script>
+
+</body>
+</html>
